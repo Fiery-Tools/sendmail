@@ -4,7 +4,11 @@ import nodemailer from 'nodemailer';
 const transporter = nodemailer.createTransport({
   host: 'localhost',
   port: 25,
-  secure: false, // true for 465, false for other ports
+  secure: false, // Will use STARTTLS
+  tls: {
+    // do not fail on invalid certs
+    rejectUnauthorized: false
+  }
 });
 
 /**
